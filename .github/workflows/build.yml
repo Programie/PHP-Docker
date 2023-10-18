@@ -1,0 +1,13 @@
+name: Build image
+
+on: push
+
+permissions:
+  packages: write
+
+jobs:
+  build-docker-image:
+    uses: programie/Workflows/.github/workflows/build-docker-image.yml@main
+    with:
+      dockerhub_image: programie/php
+    secrets: inherit
