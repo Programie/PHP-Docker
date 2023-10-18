@@ -7,7 +7,7 @@ A base PHP Docker image providing Apache, the [Sury PHP repository](https://sury
 The following example will Install PHP 8.2 with curl, gd and pdo_mysql as additional PHP extensions.
 
 ```Dockerfile
-FROM ghcr.io/programie/php-docker:main
+FROM ghcr.io/programie/php-docker
 
 RUN install-php 8.2 curl gd pdo-mysql
 ```
