@@ -29,15 +29,18 @@ RUN set -eux; \
     ln -sfT /dev/stdout ${APACHE_LOG_DIR}/other_vhosts_access.log; \
     rm -rf /var/www/html; \
     mkdir /var/www/html; \
-    chown -R www-data:www-data /var/www/html
+    chown -R www-data:www-data /var/www/html; \
+    mkdir /docker-entrypoint.d
 
 COPY config/apache2.conf ${APACHE_CONFDIR}/conf-enabled/10-docker.conf
 COPY config/apache2-vhost.conf ${APACHE_CONFDIR}/sites-enabled/000-default.conf
 COPY config/php.ini /etc/php/docker.ini
 COPY bin/ /usr/local/bin/
+COPY entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR ${WEB_ROOT}
 
 EXPOSE 80
 
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
