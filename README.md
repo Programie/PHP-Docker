@@ -27,3 +27,11 @@ The default document root is `/var/www/html` but can be changed using the enviro
 ## Timezone
 
 The default timezone is `UTC` but can be changed using the environment variable `TZ`.
+
+## Execute scripts on container startup
+
+By default, the Apache httpd webserver is started if no other command is specific on container startup.
+
+To execute specific scripts before starting the webserver, put the scripts in the `/docker-entrypoint.d directory`.
+
+This is useful to run application migrations before starting the webserver.
